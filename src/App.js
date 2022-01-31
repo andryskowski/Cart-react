@@ -71,7 +71,7 @@ function App() {
       </div>
      <div className="minicart">
        <div className="section section-header">
-        <h2>Cartt ({items.length})</h2>
+        <h2>Cart ({items.length})</h2>
         <div className="button-container">
           <button className="button-x">X</button>
         </div>
