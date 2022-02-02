@@ -197,9 +197,7 @@ function App() {
       <button className="button-animation" onClick={() => animation("slideIn")}>
         click me
       </button>
-
       <div className="background" onClick={() => animation("slideOut")}></div>
-
       <div className="minicart">
         <div className="section section-header">
           <h2>Cart ({items.length})</h2>
@@ -210,7 +208,6 @@ function App() {
             <button className="button-x">X</button>
           </div>
         </div>
-
         <div className="sections-list-summary" ref={refDivToAnimation}>
           <div className="section section-list">
             <ul className="products-list">{listItems}</ul>
@@ -221,7 +218,6 @@ function App() {
               <ul className="recommended-products">{listRecommended}</ul>
             </div>
           </div>
-
           <div className="section section-summary">
             <div className="section-summary-text">
               <p className="shipping">
