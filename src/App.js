@@ -201,7 +201,6 @@ function App() {
       <div className="background" onClick={() => animation("slideOut")}></div>
 
       <div className="minicart">
-
         <div className="section section-header">
           <h2>Cart ({items.length})</h2>
           <div
@@ -216,12 +215,10 @@ function App() {
           <div className="section section-list">
             <ul className="products-list">{listItems}</ul>
             <div className="recommended-products-subsection">
-            <h4 className="recommended-products-header">
-              Recommended products:
-            </h4>
-            <ul className="recommended-products">
-              {listRecommended}
-            </ul>
+              <h4 className="recommended-products-header">
+                Recommended products:
+              </h4>
+              <ul className="recommended-products">{listRecommended}</ul>
             </div>
           </div>
 
@@ -245,7 +242,6 @@ function App() {
               <button className="button-checkout">Checkout</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
