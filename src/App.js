@@ -5,7 +5,7 @@ import Data from "./Data.json";
 
 function App() {
   const [items, setItems] = useState(Data.items);
-  const [recommendedProducts, setReccomendedProducts] = useState([]);
+  const [recommendedProducts, setRecomendedProducts] = useState([]);
   const refDivToAnimation = useRef(null);
 
   useEffect(async () => {
@@ -14,8 +14,7 @@ function App() {
       .catch((error) => {
         console.error("Error:", error);
       });
-
-    setReccomendedProducts(response);
+    setRecomendedProducts(response);
   }, []);
 
   const removeItem = (id) => {
@@ -26,7 +25,6 @@ function App() {
   // amount: -1 - button minus, 0 - own value, 1 - button plus
   const setQuantity = (currentItem, amount, event) => {
     const valueFromInput = Number(event.target.value);
-
     // setQuantity by buttons
     if (
       (amount === 1 && currentItem.qty < 10) ||
@@ -62,7 +60,7 @@ function App() {
   const getOrderTotal = () => {
     const orderTotal = items
       .map((item) => item.price.current_price * item.qty)
-      .reduce((x, y) => x + y);
+      .reduce((x, y) => x + y, 0);
     const orderPlusShipping = (orderTotal + Data.shipping).toFixed(2);
     return orderPlusShipping;
   };
@@ -167,7 +165,7 @@ function App() {
 
   const listRecommended = recommendedProducts.map((item) => {
     return (
-      <li className="recommended-product">
+      <li className="recommended-product" key={item.id}>
         <div className="product-img-container">
           <img className="product-img" src={productImage} alt="no img"></img>
         </div>
@@ -186,11 +184,11 @@ function App() {
 
   const animation = (type) => {
     if (type === "slideIn") {
-      refDivToAnimation.current.classList.add("animation-slide-in");
       refDivToAnimation.current.classList.remove("animation-slide-out");
+      refDivToAnimation.current.classList.add("animation-slide-in");
     } else if (type === "slideOut") {
-      refDivToAnimation.current.classList.add("animation-slide-out");
       refDivToAnimation.current.classList.remove("animation-slide-in");
+      refDivToAnimation.current.classList.add("animation-slide-out");
     }
   };
 
@@ -203,6 +201,7 @@ function App() {
       <div className="background" onClick={() => animation("slideOut")}></div>
 
       <div className="minicart">
+
         <div className="section section-header">
           <h2>Cart ({items.length})</h2>
           <div
@@ -216,10 +215,14 @@ function App() {
         <div className="sections-list-summary" ref={refDivToAnimation}>
           <div className="section section-list">
             <ul className="products-list">{listItems}</ul>
+            <div className="recommended-products-subsection">
             <h4 className="recommended-products-header">
               Recommended products:
             </h4>
-            <ul className="recommended-products">{listRecommended}</ul>
+            <ul className="recommended-products">
+              {listRecommended}
+            </ul>
+            </div>
           </div>
 
           <div className="section section-summary">
@@ -242,6 +245,7 @@ function App() {
               <button className="button-checkout">Checkout</button>
             </div>
           </div>
+
         </div>
       </div>
     </div>
