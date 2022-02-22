@@ -8,13 +8,16 @@ function App() {
   const [recommendedProducts, setRecomendedProducts] = useState([]);
   const refDivToAnimation = useRef(null);
 
-  useEffect(async () => {
+  useEffect(() => {
+    async function getData() {
     const response = await fetch("https://fakestoreapi.com/products?limit=2")
       .then((res) => res.json())
       .catch((error) => {
         console.error("Error:", error);
       });
     setRecomendedProducts(response);
+    }
+    getData();
   }, []);
 
   const removeItem = (id) => {
