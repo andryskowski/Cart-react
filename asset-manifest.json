@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/recruitment-task/static/css/main.d4ba4570.css",
-    "main.js": "/recruitment-task/static/js/main.9f9450c0.js",
-    "static/js/787.c63646b5.chunk.js": "/recruitment-task/static/js/787.c63646b5.chunk.js",
-    "index.html": "/recruitment-task/index.html",
-    "main.d4ba4570.css.map": "/recruitment-task/static/css/main.d4ba4570.css.map",
-    "main.9f9450c0.js.map": "/recruitment-task/static/js/main.9f9450c0.js.map",
-    "787.c63646b5.chunk.js.map": "/recruitment-task/static/js/787.c63646b5.chunk.js.map"
+    "main.css": "/cart-react/static/css/main.d4ba4570.css",
+    "main.js": "/cart-react/static/js/main.a92242c9.js",
+    "static/js/787.c63646b5.chunk.js": "/cart-react/static/js/787.c63646b5.chunk.js",
+    "index.html": "/cart-react/index.html",
+    "main.d4ba4570.css.map": "/cart-react/static/css/main.d4ba4570.css.map",
+    "main.a92242c9.js.map": "/cart-react/static/js/main.a92242c9.js.map",
+    "787.c63646b5.chunk.js.map": "/cart-react/static/js/787.c63646b5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d4ba4570.css",
-    "static/js/main.9f9450c0.js"
+    "static/js/main.a92242c9.js"
   ]
 }
