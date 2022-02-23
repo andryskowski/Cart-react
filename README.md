@@ -6,4 +6,4 @@
 
 demo: https://andryskowski.github.io/Cart-react/
 
-![Bez tytułu](https://user-images.githubusercontent.com/52753339/155382751-c59b05cd-b5a1-4366-866f-b266cfc6aaff.png)
+![image](https://user-images.githubusercontent.com/52753339/155382937-e7de8681-68c1-4284-89b6-606fe56ed363.png)
