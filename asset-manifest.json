@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/cart-react/static/css/main.d4ba4570.css",
-    "main.js": "/cart-react/static/js/main.a92242c9.js",
-    "static/js/787.c63646b5.chunk.js": "/cart-react/static/js/787.c63646b5.chunk.js",
-    "index.html": "/cart-react/index.html",
-    "main.d4ba4570.css.map": "/cart-react/static/css/main.d4ba4570.css.map",
-    "main.a92242c9.js.map": "/cart-react/static/js/main.a92242c9.js.map",
-    "787.c63646b5.chunk.js.map": "/cart-react/static/js/787.c63646b5.chunk.js.map"
+    "main.css": "/Cart-react/static/css/main.d4ba4570.css",
+    "main.js": "/Cart-react/static/js/main.ff6d0e46.js",
+    "static/js/787.c63646b5.chunk.js": "/Cart-react/static/js/787.c63646b5.chunk.js",
+    "index.html": "/Cart-react/index.html",
+    "main.d4ba4570.css.map": "/Cart-react/static/css/main.d4ba4570.css.map",
+    "main.ff6d0e46.js.map": "/Cart-react/static/js/main.ff6d0e46.js.map",
+    "787.c63646b5.chunk.js.map": "/Cart-react/static/js/787.c63646b5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d4ba4570.css",
-    "static/js/main.a92242c9.js"
+    "static/js/main.ff6d0e46.js"
   ]
 }
