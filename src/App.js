@@ -9,21 +9,36 @@ function App() {
   const refDivToAnimation = useRef(null);
 
   useEffect(() => {
-    async function getData() {
-    const response = await fetch("https://fakestoreapi.com/products?limit=2")
-      .then((res) => res.json())
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-    setRecomendedProducts(response);
+    async function getProductsData() {
+    const response = await fetch("https://fakestoreapi.com/products?limit=2");
+   try{
+        const productsData = await response.json();
+        setRecomendedProducts(productsData);
+      }
+   catch(err) {
+     console.error(err);
+   }
     }
-    getData();
+    getProductsData();
   }, []);
 
   const removeItem = (id) => {
     const newItems = items.filter((item) => item.id !== id);
     setItems(newItems);
   };
+
+  const setItemsByUser = (currentItem, amount, isSetItemsByButton) => {
+    setItems(
+      items.map((item) =>
+        item.id === currentItem.id
+          ? {
+              ...item,
+              qty: isSetItemsByButton ? item.qty + amount : amount,
+            }
+          : item
+      )
+    );
+  }
 
   // amount: -1 - button minus, 0 - own value, 1 - button plus
   const setQuantity = (currentItem, amount, event) => {
@@ -33,30 +48,11 @@ function App() {
       (amount === 1 && currentItem.qty < 10) ||
       (amount === -1 && currentItem.qty > 1)
     ) {
-      setItems(
-        items.map((item) =>
-          item.id === currentItem.id
-            ? {
-                ...item,
-                qty: item.qty + amount,
-              }
-            : item
-        )
-      );
+      setItemsByUser(currentItem, amount, true);
     }
-
     // setQuantity by input
     if (amount === 0 && valueFromInput <= 10 && valueFromInput >= 1) {
-      setItems(
-        items.map((item) =>
-          item.id === currentItem.id
-            ? {
-                ...item,
-                qty: valueFromInput,
-              }
-            : item
-        )
-      );
+      setItemsByUser(currentItem, valueFromInput, false);
     }
   };
 
@@ -67,6 +63,17 @@ function App() {
     const orderPlusShipping = (orderTotal + Data.shipping).toFixed(2);
     return orderPlusShipping;
   };
+
+  const getOption = (item, currOption) => {
+    const option = item.product_options.find(option => option.id === currOption);
+    if (option) {
+    return (
+      <p key={option.id} className={`product-${option.id}`}>
+      <b>{option.name}</b> <span>{option.value}</span>
+    </p>
+    );
+  }
+  }
 
   const listItems = items.map((item) => {
     return (
@@ -79,30 +86,9 @@ function App() {
             <h2 className="product-name">
               {item.product_name ? item.product_name : ""}
             </h2>
-            {item.product_options.map((option) => {
-              if (option.id === "size")
-                return (
-                  <p key={option.id} className="product-size">
-                    <b>Size:</b> <span>{option.value}</span>
-                  </p>
-                );
-            })}
-            {item.product_options.map((option) => {
-              if (option.id === "color")
-                return (
-                  <p key={option.id} className="product-color">
-                    <b>Color:</b> <span>{option.value}</span>
-                  </p>
-                );
-            })}
-            {item.product_options.map((option) => {
-              if (option.id === "pattern")
-                return (
-                  <p key={option.id} className="product-pattern">
-                    <b>Pattern:</b> <span>{option.value}</span>
-                  </p>
-                );
-            })}
+            {getOption(item, 'size')}
+            {getOption(item, 'color')}
+            {getOption(item, 'pattern')}
           </div>
           <div className="button-container">
             <button className="button-x" onClick={() => removeItem(item.id)}>
